@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'teal' | 'outline';
+  variant?: 'primary' | 'secondary' | 'teal' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   asLink?: boolean;
   href?: string;
@@ -37,6 +37,8 @@ export default function Button({
       'bg-brand-teal-500 text-white hover:bg-brand-teal-600 active:bg-brand-teal-700 shadow-sm hover:shadow focus-visible:ring-brand-teal-500',
     outline:
       'border border-slate-300 text-slate-700 hover:border-brand-blue-600 hover:text-brand-blue-600 active:bg-brand-blue-50/50 bg-white focus-visible:ring-brand-blue-600',
+    ghost:
+      'border border-white/20 text-white hover:border-white/50 hover:bg-white/8 active:bg-white/12 focus-visible:ring-white/40',
   }[variant];
 
   const fullClassName = `${baseStyles} ${sizeStyles} ${variantStyles} ${className}`;

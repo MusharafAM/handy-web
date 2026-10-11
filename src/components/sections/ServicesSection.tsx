@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { SERVICES } from '@/data/services';
-import { Globe, Code2, Layers, ShieldCheck, Check } from 'lucide-react';
+import { Globe, Code2, Layers, ShieldCheck, Check, ArrowRight } from 'lucide-react';
 
 const iconMap = {
   Globe: Globe,
@@ -12,7 +12,7 @@ const iconMap = {
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="py-20 sm:py-28 bg-slate-50/50">
+    <section id="services" className="py-20 sm:py-28 bg-slate-50/70 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           badge="Services"
@@ -26,42 +26,48 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.id}
-                className="group relative bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/80 shadow-xs hover:shadow-lg hover:border-brand-teal-500/50 transition-all duration-300 flex flex-col justify-between"
+                className="group relative bg-white rounded-2xl p-7 sm:p-8 border border-slate-200/80 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-teal-400/50 transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
+                {/* Hover gradient accent top */}
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-brand-teal-400 to-brand-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+
                 <div>
-                  {/* Icon with subtle hover transition */}
-                  <div className="w-13 h-13 rounded-xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center mb-6 group-hover:bg-brand-teal-50 group-hover:text-brand-teal-600 border border-brand-blue-100 group-hover:border-brand-teal-200 transition-colors duration-200">
+                  <div className="w-13 h-13 rounded-xl bg-brand-blue-50 text-brand-blue-600 flex items-center justify-center mb-6 group-hover:bg-brand-teal-50 group-hover:text-brand-teal-600 border border-brand-blue-100 group-hover:border-brand-teal-200 transition-all duration-200 group-hover:scale-105">
                     <Icon className="w-6 h-6" />
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-brand-blue-900 group-hover:text-brand-blue-700 transition-colors mb-3">
+                  <h3 className="text-xl font-bold text-brand-blue-900 group-hover:text-brand-teal-700 transition-colors mb-3">
                     {service.title}
                   </h3>
 
-                  {/* Description */}
                   <p className="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
                     {service.description}
                   </p>
                 </div>
 
-                {/* Features list */}
-                <div className="pt-5 border-t border-slate-100 space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600">
-                      <div className="w-4 h-4 rounded-full bg-brand-teal-50 text-brand-teal-600 flex items-center justify-center shrink-0">
-                        <Check className="w-2.5 h-2.5" />
+                <div className="pt-5 border-t border-slate-100">
+                  <div className="space-y-2 mb-5">
+                    {service.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center gap-2.5 text-xs sm:text-sm text-slate-600">
+                        <div className="w-4 h-4 rounded-full bg-brand-teal-50 text-brand-teal-600 flex items-center justify-center shrink-0">
+                          <Check className="w-2.5 h-2.5" />
+                        </div>
+                        <span>{feature}</span>
                       </div>
-                      <span>{feature}</span>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-blue-600 group-hover:text-brand-teal-600 transition-colors"
+                  >
+                    Learn more <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </a>
                 </div>
               </div>
             );
           })}
         </div>
 
-        {/* Small subtle callout */}
         <div className="mt-14 text-center">
           <p className="text-sm text-slate-500">
             Have a custom requirement?{' '}
